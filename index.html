@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
+	<title>Mi App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/jquerymobile.min.css">
 </head>
 <body>
-	<h1>Hola Mundo, Soy Jonathan Cardenas Murillo</h1>
+
+<div data-role="page" id="page1">
+	<div data-role="header"></div>
+	<div role="main" class="ui-content">
+		<button id="c_data">create data</button>
+		<button id="v_data">view data</button>
+		<button id="d_data">destroy data</button>
+	</div>
+	<div data-role="footer"></div>
+</div>
+
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquerymobile.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var session = window.localStorage;
+	$('#c_data').click(function(){
+		value = prompt("Nombre","");
+		session.setItem("key", value);
+	});
+	$('#v_data').click(function(){
+		var value = session.getItem("key");
+		if(value){
+			alert(value);
+		}else{
+			alert("No existen datos");
+		}
+	});
+	$('#d_data').click(function(){
+		session.clear();
+	});
+});
+</script>
 </body>
 </html>
